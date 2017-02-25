@@ -1,16 +1,20 @@
-const Koa    = require('koa');
-const app    = new Koa();
-const mongo  = require('koa-mongo');
-const router = require('koa-router')();
+const Koa        = require('koa');
+const app        = new Koa();
+const mongo      = require('koa-mongo');
+const router     = require('koa-router')();
+const bodyParser = require('koa-bodyparser');
 
 // Routing
 
 router
   .get('/contacts', function *(next) {
-    this.body = await this.mongo.db('crud').collection('contacts').find().toArray();
+    this.body = yield this.mongo.db('test').collection('contacts').find().toArray();
   })
   .put('/contact/:id', function *(next) {
-    this.body = this.params.id;
+    var body = this.request.body
+    console.log(body);
+    var result = yield this.mongo.db('test').collection('contacts').update({_id: this.params.id }, body, {upsert: true });
+    this.body = result;
   });
 
 // x-response-time
@@ -32,7 +36,8 @@ app.use(async function (ctx, next) {
 });
 
 app
-  .use(mongo({ uri: 'mongodb://localhost:27017/crud' }));
+  .use(mongo())
+  .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods());
 
