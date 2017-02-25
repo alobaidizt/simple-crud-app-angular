@@ -15,5 +15,10 @@
     "koa-bodyparser": "^2.3.0",
     "koa-mongo": "^0.7.0",
     "koa-router": "^5.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "fetch-test-server": "^1.1.0"
   }
 }

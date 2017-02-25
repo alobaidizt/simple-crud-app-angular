@@ -42,3 +42,5 @@ app
   .use(router.allowedMethods());
 
 app.listen(3000);
+
+module.exports = app;
