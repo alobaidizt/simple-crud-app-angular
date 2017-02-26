@@ -1,6 +1,7 @@
 const Koa        = require('koa');
 const app        = new Koa();
 const mongo      = require('koa-mongo');
+const ObjectId   = require('mongodb').ObjectID;
 const router     = require('koa-router')();
 const bodyParser = require('koa-bodyparser');
 
@@ -8,13 +9,24 @@ const bodyParser = require('koa-bodyparser');
 
 router
   .get('/contacts', function *(next) {
-    this.body = yield this.mongo.db('test').collection('contacts').find().toArray();
+    try {
+      var contacts = yield this.mongo.db('test').collection('contacts').find().toArray();
+      this.body = { contacts: contacts }
+    } catch (err) {
+      console.log(err);
+      this.body = err;
+    }
   })
-  .put('/contact/:id', function *(next) {
+  .post('/contacts', function *(next) {
     var body = this.request.body
-    console.log(body);
-    var result = yield this.mongo.db('test').collection('contacts').update({_id: this.params.id }, body, {upsert: true });
-    this.body = result;
+    var id = new ObjectId()
+    try {
+      yield this.mongo.db('test').collection('contacts').update({_id: id }, body, {upsert: true });
+      this.body = { contacts: body };
+    } catch (err) {
+      console.log(err);
+      this.body = err;
+    }
   });
 
 // x-response-time
@@ -24,6 +36,8 @@ app.use(async function (ctx, next) {
   await next();
   const ms = new Date() - start;
   ctx.set('X-Response-Time', `${ms}ms`);
+  ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.set('Access-Control-Allow-Headers', "Content-Type");
 });
 
 // logger
