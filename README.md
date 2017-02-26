@@ -10,17 +10,17 @@ Make sure you have [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.com
 git clone https://github.com/alobaidizt/simple-crud-app-front-end.git # or clone your own fork
 cd simple-crud-app-in-angular
 npm install
-npm start // To start Node server
-npm run-script start-app // To serve angular webApp
+npm start # To start Node server
+npm run-script start-app # To serve angular webApp
 ```
 
 
 ## Running Tests
 
 ```sh
-npm test // To run Node tests
-npm run-script test-app // To run Angular's unit and integration tests
-npm run-script test-e2e // To run Angular's end-to-end (acceptance) tests
+npm test # To run Node tests
+npm run-script test-app # To run Angular's unit and integration tests
+npm run-script test-e2e # To run Angular's end-to-end (acceptance) tests
 ```
 
 Your app should now be running on [localhost:4200](http://localhost:4200/).
