@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/serverTest.js",
-    "start": "node server.js"
+    "test": "mocha simple-crud-app-back-end/tests/serverTest.js",
+    "start": "node simple-crud-app-back-end/server.js"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
-    "fetch-test-server": "^1.1.0"
+    "chai-http": "^3.0.0"
   }
 }
