@@ -27,4 +27,5 @@ Your app should now be running on [localhost:4200](http://localhost:4200/).
 
 ## Credits
 Author: [Ziyad Al Obaidi](http://ziyadalobaidi.com)
+
 [Angular](https://angular.io/), [koa](http://koajs.com/), [Node.js](http://nodejs.org/), [mongo](https://www.mongodb.com/), [colourlovers](http://www.colourlovers.com/)
