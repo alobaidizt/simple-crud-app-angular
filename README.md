@@ -13,6 +13,7 @@ npm install
 npm start # To start Node server
 npm run-script start-app # To serve angular webApp
 ```
+Your app should now be running on [localhost:4200](http://localhost:4200/).
 
 
 ## Running Tests
@@ -22,8 +23,6 @@ npm test # To run Node tests
 npm run-script test-app # To run Angular's unit and integration tests
 npm run-script test-e2e # To run Angular's end-to-end (acceptance) tests
 ```
-
-Your app should now be running on [localhost:4200](http://localhost:4200/).
 
 ## Credits
 Author: [Ziyad Al Obaidi](http://ziyadalobaidi.com)
