@@ -18,11 +18,20 @@ router
     }
   })
   .post('/contacts', function *(next) {
-    var body = this.request.body
-    var id = new ObjectId()
+    var body = this.request.body;
+    var id = new ObjectId();
     try {
       yield this.mongo.db('test').collection('contacts').update({_id: id }, body, {upsert: true });
       this.body = { contacts: body };
+    } catch (err) {
+      console.log(err);
+      this.body = err;
+    }
+  })
+  .del('/contacts', function *(next) {
+    try {
+      yield this.mongo.db('test').collection('contacts').remove({});
+      this.body = { contacts: [] };
     } catch (err) {
       console.log(err);
       this.body = err;
@@ -37,6 +46,7 @@ app.use(async function (ctx, next) {
   const ms = new Date() - start;
   ctx.set('X-Response-Time', `${ms}ms`);
   ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.set('Access-Control-Allow-Methods', "GET, POST, OPTIONS, PUT, DELETE");
   ctx.set('Access-Control-Allow-Headers', "Content-Type");
 });
 
