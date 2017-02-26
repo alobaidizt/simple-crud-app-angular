@@ -1,0 +1,3 @@
+[submodule "simple-crud-app-front-end"]
+	path = simple-crud-app-front-end
+	url = https://github.com/alobaidizt/simple-crud-app-front-end
