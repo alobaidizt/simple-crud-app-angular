@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha simple-crud-app-back-end/tests/serverTest.js",
-    "start": "node simple-crud-app-back-end/server.js"
+    "test":      "mocha simple-crud-app-back-end/tests/serverTest.js",
+    "start":     "node simple-crud-app-back-end/server.js",
+    "start-app": "cd simple-crud-app-front-end && npm start",
+    "test-app":  "cd simple-crud-app-front-end && npm test",
+    "test-e2e":  "cd simple-crud-app-front-end && npm run-script e2e"
   },
   "keywords": [],
   "author": "",
